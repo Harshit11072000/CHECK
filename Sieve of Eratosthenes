@@ -1,0 +1,32 @@
+//Question: To find prime numbers upto n;
+//Seive of eratosthenes Method
+
+#include <iostream>
+using namespace std;
+#define ll long long
+int main() {
+	
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    ll n;
+	    cin>>n;
+	    int dp[100001]={0};
+	    for(ll i=3;i<100001;i+=2)
+	        dp[i]=1;  //Marking all odd as prime
+	   for(ll i=3;i<100001;i+=2)
+	    if(dp[i]==1)
+	    {
+	        for(ll j=i*i;j<100001;j+=i)
+	            dp[j]=0;  //Marking odd Numbers which are not prime
+	    }
+	    dp[2]=1;
+	    dp[1]=dp[0]=0;
+	    for(ll i=2;i<=n;i++)
+	        if(dp[i]==1)
+	            cout<<i<<" ";
+	   cout<<"\n";
+	}
+	return 0;
+}
